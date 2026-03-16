@@ -20,20 +20,22 @@ Once deployed to GitHub Pages, the site will be available at:
 
 ## Workshops Supported
 
-| # | Day | Title |
-|---|-----|-------|
-| 1 | Tuesday | Building AI Skills and Agents with Joule Studio |
-| 2 | Wednesday | Getting Started with Joule for Developers |
-| 3 | Wednesday | Building AI Skills and Agents with Joule Studio |
+| # | Day       | Title                                            |
+|---|-----------|--------------------------------------------------|
+| 1 | Tuesday   | Building AI Skills and Agents with Joule Studio  |
+| 2 | Wednesday | Getting Started with Joule for Developers        |
+| 3 | Wednesday | Building AI Skills and Agents with Joule Studio  |
 
 ## Project Structure
 
-```
-├── index.html        # Main application page
-├── css/
-│   └── styles.css    # SAP-branded styles
-└── js/
-    └── app.js        # Application logic and validation
+```mermaid
+graph TD
+    root["sap-insider-hands-on-2026/"]
+    root --> index["index.html — Main application page"]
+    root --> css["css/"]
+    root --> js["js/"]
+    css --> styles["styles.css — SAP-branded styles"]
+    js --> app["app.js — Application logic and validation"]
 ```
 
 ## Deploying to GitHub Pages
