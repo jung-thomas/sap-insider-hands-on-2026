@@ -48,9 +48,7 @@
         <label for="workshop-select">Which workshop are you attending? <span class="required">*</span></label>
         <select id="workshop-select" onchange="onWorkshopChange()">
           <option value="">-- Please select your workshop --</option>
-          <option value="1">Tuesday – Building AI Skills and Agents with Joule Studio</option>
-          <option value="2">Wednesday – Getting Started with Joule for Developers</option>
-          <option value="3">Wednesday – Building AI Skills and Agents with Joule Studio</option>
+
         </select>
       </div>
 
@@ -58,8 +56,17 @@
         <label for="group-input">Your Group Number <span class="required">*</span></label>
         <p class="field-hint">Enter your 3-digit group number (e.g. 001, 042, 150)</p>
         <input type="text" id="group-input" maxlength="3" placeholder="e.g. 001"
-               oninput="onGroupInput()" onblur="onGroupBlur()">
-        <p id="group-error" class="field-error hidden"></p>
+               oninput="onGroupInput()" onblur="onGroupBlur()" onkeydown="onGroupKeyDown(event)"
+               aria-required="true" aria-describedby="group-error">
+        <p id="group-error" class="field-error hidden" aria-live="polite"></p>
+      </div>
+
+      <div id="email-section" class="form-group hidden">
+        <label for="email-input">SAP Universal ID Email Address <span class="required">*</span></label>
+        <input type="email" id="email-input" placeholder="e.g. firstname.lastname@example.com"
+               oninput="onEmailInput()" onblur="onEmailBlur()"
+               aria-required="true" aria-describedby="email-error">
+        <p id="email-error" class="field-error hidden" aria-live="polite"></p>
       </div>
 
       <div id="result-section" class="result-section hidden">
@@ -73,7 +80,7 @@
           </div>
           <div class="info-row">
             <span class="info-label">Password</span>
-            <span class="info-value" id="res-password">J!!lEs8P</span>
+            <span class="info-value" id="res-password"></span>
             <button class="copy-btn" onclick="copyText('res-password')" title="Copy">Copy</button>
           </div>
           <div class="info-row">
@@ -82,18 +89,29 @@
           </div>
           <div class="info-row">
             <span class="info-label">Exercise Instructions</span>
-            <a class="info-link" href="https://developers.sap.com/mission.joule-studio-codejam.html" target="_blank" rel="noopener">developers.sap.com/mission.joule-studio-codejam.html</a>
+            <a class="info-link" id="res-exercise" target="_blank" rel="noopener"></a>
           </div>
         </div>
 
         <div id="workshop2-block" class="hidden">
           <div class="info-row">
             <span class="info-label">System Access</span>
-            <a class="info-link" href="https://www.sap.com/products/technology-platform/build/trial.html" target="_blank" rel="noopener">SAP Build Trial Access</a>
+            <a class="info-link" id="res-system" target="_blank" rel="noopener"></a>
           </div>
           <div class="info-row">
             <span class="info-label">Exercise Instructions</span>
-            <a class="info-link" href="https://github.com/SAP-samples/teched2025-AD160" target="_blank" rel="noopener">github.com/SAP-samples/teched2025-AD160</a>
+            <a class="info-link" id="res-exercise2" target="_blank" rel="noopener"></a>
+          </div>
+        </div>
+
+        <div id="workshop-fiori-block" class="hidden">
+          <div class="info-row">
+            <span class="info-label">Exercise Instructions</span>
+            <a class="info-link" id="res-exercise-fiori" target="_blank" rel="noopener"></a>
+          </div>
+          <div class="register-row">
+            <button id="register-btn" class="register-btn" onclick="onRegisterClick()">Request Access</button>
+            <p id="register-status" class="register-status"></p>
           </div>
         </div>
       </div>
